@@ -3,7 +3,7 @@ define(function(require, exports, module) {
     var CommandManager = brackets.getModule("command/CommandManager"),
     Menus = brackets.getModule("command/Menus"),
 	KeyBindingManager = brackets.getModule("command/KeyBindingManager"),
-    PanelManager = brackets.getModule("view/PanelManager"),
+    WorkspaceManager = brackets.getModule("view/WorkspaceManager"),
     ExtensionUtils = brackets.getModule("utils/ExtensionUtils"),        
     AppInit = brackets.getModule("utils/AppInit");
 
@@ -32,9 +32,9 @@ define(function(require, exports, module) {
         $layersIcon.click(function () {
             handleLayers();
         }).appendTo("#main-toolbar .buttons");
-		
+	    
+		panel = WorkspaceManager.createBottomPanel(LAYERS_EXECUTE, $(panelHtml),200);	
 		ExtensionUtils.loadStyleSheet(module, "styles.css");
-        panel = PanelManager.createBottomPanel(LAYERS_EXECUTE, $(panelHtml),200);
     });
 	
 });
